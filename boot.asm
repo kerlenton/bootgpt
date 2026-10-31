@@ -120,6 +120,8 @@ mainloop:
         jmp mainloop
 
 keyexit:
+        xor ah, ah              ; consume the keypress so the buffer
+        int 0x16                ; is empty after the reboot
         int 0x19                ; reboot
 
 ; ---------------- inference (mirrors BootSim in train.py) ----------------
